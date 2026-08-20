@@ -97,7 +97,7 @@ packages/
   config/    runtime configuration
   scanner/   on-demand scanning workflows
 docs/
-  stander-signal-notion.md  product documentation and NotionAI prompt
+  local-only product notes and NotionAI drafting material
 ```
 
 The committed runtime artifacts are under the corresponding `dist/` directories. Deployment-specific secrets and configuration are supplied through the host environment.
@@ -120,7 +120,8 @@ Only data exposed through documented, supported StandX APIs is used. Account are
 
 ## Documentation
 
-See [docs/stander-signal-notion.md](docs/stander-signal-notion.md) for the longer product/onboarding document intended for review by the StandX team.
+See the public Notion page for the longer product/onboarding document intended for review by the StandX team:
+[stander-signal](https://lilyhoang210.notion.site/stander-signal)
 
 ## Status
 
