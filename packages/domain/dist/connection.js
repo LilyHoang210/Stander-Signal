@@ -1,5 +1,5 @@
 import { createHash, randomBytes, randomUUID } from "node:crypto";
-const connectionSessionLifetimeMilliseconds = 5 * 60 * 1_000;
+const connectionSessionLifetimeMilliseconds = 15 * 60 * 1_000;
 export class ConnectionSessionError extends Error {
     code;
     constructor(code) {

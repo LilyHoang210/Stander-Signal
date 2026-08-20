@@ -5,10 +5,10 @@ function createService() {
     return new ConnectionSessionService(new InMemoryConnectionSessionRepository(), () => Buffer.alloc(32, 7));
 }
 describe("ConnectionSessionService", () => {
-    it("creates a 32-byte identifier that expires after five minutes", async () => {
+    it("creates a 32-byte identifier that expires after fifteen minutes", async () => {
         const session = await createService().create("telegram-user-1", now);
         expect(Buffer.from(session.id, "base64url")).toHaveLength(32);
-        expect(session.expiresAt).toEqual(new Date("2026-08-14T12:05:00Z"));
+        expect(session.expiresAt).toEqual(new Date("2026-08-14T12:15:00Z"));
     });
     it("consumes a session only once", async () => {
         const service = createService();
@@ -22,7 +22,7 @@ describe("ConnectionSessionService", () => {
         const service = createService();
         const session = await service.create("telegram-user-1", now);
         await expect(service.consume(session.id, "telegram-user-2", now)).rejects.toThrow(/user/i);
-        await expect(service.consume(session.id, "telegram-user-1", new Date("2026-08-14T12:05:00Z"))).rejects.toThrow(/expired/i);
+        await expect(service.consume(session.id, "telegram-user-1", new Date("2026-08-14T12:15:00Z"))).rejects.toThrow(/expired/i);
     });
     it("atomically allows one concurrent consumer", async () => {
         const service = createService();
